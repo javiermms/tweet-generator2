@@ -12,11 +12,8 @@ def shuffle(arr):
         shuffled_arr.append(word)
     return shuffled_arr
 
-result = shuffle(arr)
-
-print(' '.join(result))
-
-
-
+if __name__ == '__main__':
+    result = shuffle(arr)
+    print(' '.join(result))
 
             
