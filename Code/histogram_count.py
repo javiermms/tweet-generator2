@@ -1,36 +1,21 @@
+from histogram_tuples import array
 # Output:counts_list = [(1, ['one', 'two', 'red', 'blue']), (4, ['fish'])]
-#loop through the if the word is unique append it to an array and set the frequncy to one
-# if the word is not unique count the frequency and create a tuple
-# note that the words go in array that makes up a tuple 
-# array[tuple(1,array[])]
+# Take in a histogram
+# loop through the histogram and check to see if any indidual word has the same count
+# if the count is same append the words together with there given count
 
-with open('sample.txt') as f:
-    array = list()
-    duplicate_array = list()
-    output = list()
-    text = f.read()
-    words_array = text.split()
-    new_array = list()
-    
-    count = 1
-    for word in words_array:
-        found = False
-        for element in array:
-            if word == element:
-                count += 1
-                found = True
-                break
-        
-        if not found:
-            array.append(word)
-    if found:
-        duplicate_array.append(word)
-            
-    output.append((1, array))
-    output.append((count, duplicate_array))
-    
-    
-    
+# [('one', 1), ('two', 1), ('red', 1), ('blue', 1), ('fish', 4)]
+
+new_array =[]
+count = len(array)-1
+for element in array:
+    found = False
+    if array[0][1] == element[1] and element[0] != array[0][0]:
+        new_array.append((element[1],[element[0],array[0][0]]))
+        found = True 
+        break
+    if not found:
+        new_array.append((1,[element[0]]))
 
 # print(array)
-print(output)
+print(new_array)

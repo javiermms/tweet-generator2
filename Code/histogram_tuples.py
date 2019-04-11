@@ -2,19 +2,25 @@ with open('sample.txt') as f:
     tupel = ()
     text = f.read()
     word_list = text.split()
-    array = []
 
-    #tuple is immutable list so the frequency and word cannot be changed once added 
-    for word in word_list:
-        found = False
-        for inner_tuple in array:
-            if word == inner_tuple[0]:
-                count = inner_tuple[1] + 1
+#tuple is immutable list so the frequency and word cannot be changed once added 
+array = []
+
+def histogram_tuple(words_array):
+    '''Creates a histogram of an array of tuples containing a word and its frequency'''
+
+    for word in words_array:
+        # found = False
+        for current_tuple in array:
+            if word == current_tuple[0]:
+                count = current_tuple[1] + 1
                 array.append((word, count))
-                array.remove(inner_tuple)
-                found = True
-                break
-        if not found:
+                array.remove(current_tuple)
+                # found = True
+                # break
+        else:
             array.append((word, 1))
+    
+    return array
 
-print(array) 
+print(histogram_tuple(word_list))
