@@ -10,8 +10,8 @@ with open('sample.txt') as f:
         for inner_tuple in array:
             if word == inner_tuple[0]:
                 count = inner_tuple[1] + 1
-                array.remove(inner_tuple)
                 array.append((word, count))
+                array.remove(inner_tuple)
                 found = True
                 break
         if not found:

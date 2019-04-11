@@ -43,6 +43,11 @@ def print_table(animal_counts):
     print('--------------')
     print(f'Total : {total_count}')
 
+     # total_count = 0
+    # for animal_name, count in animal_counts.items():
+    #     total_count += count
+    #     print(f'{animal_name} | {count}')
+
 animals_list = get_words('animals.txt')
 counts = count_animals(animals_list)
 pprint(counts)
