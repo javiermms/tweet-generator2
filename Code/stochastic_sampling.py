@@ -31,5 +31,7 @@ def check_accuracy(histogram):
 
     return(proof_dict)
 
+result = check_accuracy(array)
+
 if __name__ == '__main__':
-    print(check_accuracy(array))
+    
