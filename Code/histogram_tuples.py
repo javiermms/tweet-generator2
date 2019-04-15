@@ -16,11 +16,12 @@ def histogram_tuple(words_array):
                 count = current_tuple[1] + 1
                 array.append((word, count))
                 array.remove(current_tuple)
-                # found = True
-                # break
+                found = True
+                break
         else:
             array.append((word, 1))
     
     return array
 
-print(histogram_tuple(word_list))
+if __name__ == '__main__':  
+    print(histogram_tuple(word_list))
