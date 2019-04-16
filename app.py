@@ -7,4 +7,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return HTML.format(probability(array))
+    words = []
+    for _ in range(0, 8):
+        words.append(probability(array))
+    return ' '.join(words)
+
+    # return HTML.format(str(a_list))
