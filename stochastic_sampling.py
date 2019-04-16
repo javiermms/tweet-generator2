@@ -1,4 +1,4 @@
-from histogram_list import array
+# from histogram_list import array
 import random
 
 def probability(histogram):
