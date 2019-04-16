@@ -35,13 +35,13 @@ def print_table(animal_counts):
     for animal_name in animal_counts:
         count = animal_counts[animal_name]
         # print('{} | {}'.format(animal_name, count))
-        print(f'{animal_name} | {count}')
+        # print(f'{animal_name} | {count}')
     # total_count = 0
     # for count in animal_counts.values():
     #     total_count += count
     total_count = sum(animal_counts.values())
     print('--------------')
-    print(f'Total : {total_count}')
+    # print(f'Total : {total_count}')
 
      # total_count = 0
     # for animal_name, count in animal_counts.items():
