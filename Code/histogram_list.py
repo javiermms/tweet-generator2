@@ -18,6 +18,12 @@ def create_2dArray_historgram(array):
 
     return two_dimensional_array
 
-# if __name__ == '__main__':
+# def get_array():
+#     array = create_2dArray_historgram(words_array)
+#     return array
+
 array = create_2dArray_historgram(words_array)
+
+if __name__ == '__main__':
+    print(create_2dArray_historgram(words_array))
    

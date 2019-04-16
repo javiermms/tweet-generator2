@@ -33,5 +33,5 @@ def check_accuracy(histogram):
 
 if __name__ == '__main__':
     result = check_accuracy(array)
-    print(random_word)
+    print(result)
     
