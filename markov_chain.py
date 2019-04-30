@@ -27,8 +27,6 @@ Things your keeping track of:
 
 """
 
-# make a get related words function and then call it
-
 from dictogram import Dictogram
 
 with open('sample.txt') as f:
@@ -47,9 +45,6 @@ def create_markov(array):
         if counter + 1 <= arr_length:
             current_word = array[counter + 1]
 
-        print(previous_word + '!')
-        print(current_word)
-
         if previous_word not in markov_chain:
             markov_chain[previous_word] = Dictogram([current_word])  
         else:
@@ -57,34 +52,6 @@ def create_markov(array):
         
         counter += 1
 
-
-
-    # counter = 0
-
-    # arr_length = len(array)
-
-    # while counter < len(array):
-    #     previous_word = array[counter]
-        
-    #     if counter < arr_length - 1 and counter != arr_length:
-    #         current_word = array[counter + 1]
-            
-    #     if previous_word not in markov_chain:
-    #         markov_chain[current_word] = None
-
-    #     if markov_chain != None:
-    #         dic = {}
-    #         markov_chain[previous_word] = dic
-    #         dic[current_word] = 1
-            
-    #     counter += 1
-
-    # for word in array: 
-    #     if word not in markov_chain:
-    #         markov_chain[word] = dict()
-
-    # for word in markov_chain:
-    #     print(markov_chain[word])
     return markov_chain
 
 print(create_markov(words_array))
