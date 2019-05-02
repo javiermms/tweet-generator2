@@ -109,6 +109,7 @@ class LinkedList(object):
                 return current_node.data # O(1)
             else:
                 current_node = current_node.next # O(1)
+        #Did not find item in ll 
         return None # O(1)
 
         # 2n + 2 = O(n)
