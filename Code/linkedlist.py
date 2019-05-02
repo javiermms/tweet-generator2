@@ -60,7 +60,7 @@ class LinkedList(object):
         count = 0
         node = self.head
 
-        while node is not None:
+        while node:
             count += 1 
             node = node.next
         return count
@@ -89,12 +89,12 @@ class LinkedList(object):
 
         new_node = Node(item)
 
-        if self.is_empty():                                
+        if self.head != None:                                
+            new_node.next = self.head
+            self.head = new_node
+        else:
             self.head = new_node
             self.tail = new_node
-        else:
-            self.head.next = new_node
-            self.head = new_node
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
@@ -102,6 +102,21 @@ class LinkedList(object):
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item where quality(item) is True
         # TODO: Check if node's data satisfies given quality function
+
+        current_node = self.head
+
+        while current_node is not None:
+            if quality(current_node.data) is True:
+                return current_node.data
+            else:
+                current_node = current_node.next
+        return None
+
+        # O(1)
+        # from 1 to n iterations
+        # reassiging a variable O(1)
+        # 2n + 2 = O(n)
+
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
@@ -111,6 +126,39 @@ class LinkedList(object):
         # TODO: Update previous node to skip around node with matching data
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
+
+        current_node = self.head
+        previous_node = None
+        found = False
+
+        while current_node:
+            if self.head.data == item:
+                if self.head.next != None:
+                    self.head = self.head.next
+                    found = True
+                    break
+                else:
+                    self.head = None
+                    self.tail = None
+                    found = True
+                    break
+            elif current_node.data == item:
+                if current_node != self.tail:
+                    previous_node.next = current_node.next
+                    found = True
+                    break
+                else:
+                    previous_node.next = None
+                    self.tail = previous_node
+                    found = True
+                    break
+                    
+            else:
+                previous_node = current_node
+                current_node = current_node.next
+
+        if not found:
+            raise ValueError('Item not found: {}'.format(item))
 
 
 def test_linked_list():
@@ -128,7 +176,7 @@ def test_linked_list():
     print('length: {}'.format(ll.length()))
 
     # Enable this after implementing delete method
-    delete_implemented = False
+    delete_implemented = True
     if delete_implemented:
         print('\nTesting delete:')
         for item in ['B', 'C', 'A']:
