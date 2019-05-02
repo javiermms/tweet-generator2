@@ -54,111 +54,110 @@ class LinkedList(object):
 
     def length(self):
         """Return the length of this linked list by traversing its nodes.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        TODO: Running time: O(n) because of the while loop"""
         # TODO: Loop through all nodes and count one for each
 
-        count = 0
-        node = self.head
+        count = 0 # O(1)
+        node = self.head # O(1)
 
-        while node:
-            count += 1 
-            node = node.next
-        return count
+        while node: # from 1 to n iterations
+            count += 1  # O(1)
+            node = node.next # O(1)
+        return count # O(1)
+
+        # 2n + 3 = O(n)
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Create new node to hold given item
-        # TODO: Append node after tail, if it exists
+        TODO: Running time: O(1) because in the function there are only constant time operations"""
 
-        new_node = Node(item)
+        new_node = Node(item) # O(1)
 
-        # Diffrenet way og doing the same thing ex. prepend method
-        if self.head == None:                                
-            self.head = new_node
-            self.tail = new_node
+        if self.head == None:                             
+            self.head = new_node # O(1)
+            self.tail = new_node # O(1)
         else:                               
-            self.tail.next = new_node
-            self.tail = new_node
+            self.tail.next = new_node # O(1)
+            self.tail = new_node # O(1)
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        TODO: Running time: O(1) because in the function there are only constant time operations"""
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
 
-        new_node = Node(item)
+        new_node = Node(item) # O(1)
 
         if self.head != None:                                
-            new_node.next = self.head
-            self.head = new_node
+            new_node.next = self.head # O(1)
+            self.head = new_node # O(1)
         else:
-            self.head = new_node
-            self.tail = new_node
+            self.head = new_node # O(1)
+            self.tail = new_node # O(1)
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        TODO: Best case running time: O(1) If the data is in the first node. Then the best case would be constant time.
+        TODO: Worst case running time: O(n) If you have to go through the whole linked list. Then the worst case would be linear. """
         # TODO: Loop through all nodes to find item where quality(item) is True
         # TODO: Check if node's data satisfies given quality function
 
-        current_node = self.head
+        current_node = self.head # O(1)
 
-        while current_node is not None:
+        while current_node is not None: # from 1 to n iterations
             if quality(current_node.data) is True:
-                return current_node.data
+                return current_node.data # O(1)
             else:
-                current_node = current_node.next
-        return None
+                current_node = current_node.next # O(1)
+        return None # O(1)
 
-        # O(1)
-        # from 1 to n iterations
-        # reassiging a variable O(1)
         # 2n + 2 = O(n)
 
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        TODO: Best case running time: O(1) If the firt item happens to be the one we are looking for
+        TODO: Worst case running time: O(n) if we have to go through the whole 
+        linked list to find item that we want to delete or item does not exist"""
         # TODO: Loop through all nodes to find one whose data matches given item
         # TODO: Update previous node to skip around node with matching data
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
 
-        current_node = self.head
-        previous_node = None
-        found = False
+        current_node = self.head  # O(1)
+        previous_node = None # O(1)
+        found = False # O(1)
 
-        while current_node:
+        while current_node: # from 1 to n iterations
             if self.head.data == item:
                 if self.head.next != None:
-                    self.head = self.head.next
-                    found = True
+                    self.head = self.head.next # O(1)
+                    found = True # O(1)
                     break
                 else:
-                    self.head = None
-                    self.tail = None
-                    found = True
+                    self.head = None # O(1)
+                    self.tail = None # O(1)
+                    found = True # O(1)
                     break
             elif current_node.data == item:
                 if current_node != self.tail:
-                    previous_node.next = current_node.next
-                    found = True
+                    previous_node.next = current_node.next # O(1)
+                    found = True # O(1)
                     break
                 else:
-                    previous_node.next = None
-                    self.tail = previous_node
-                    found = True
+                    previous_node.next = None # O(1)
+                    self.tail = previous_node # O(1)
+                    found = True # O(1)
                     break
                     
             else:
-                previous_node = current_node
-                current_node = current_node.next
+                previous_node = current_node # O(1)
+                current_node = current_node.next # O(1)
 
         if not found:
-            raise ValueError('Item not found: {}'.format(item))
+            raise ValueError('Item not found: {}'.format(item)) # O(1)
+
+        # 12n + 4 = O(n)
 
 
 def test_linked_list():
