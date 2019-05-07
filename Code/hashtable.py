@@ -116,6 +116,15 @@ class HashTable(object):
         bucket = self.buckets[self._bucket_index(key)]
         entry = bucket.find(lambda pair: pair[0] == key)
 
+        new_entry = (key,value)
+
+        if entry is not None:
+            bucket.delete(entry)
+            bucket.append(new_entry)
+        else:
+            bucket.append(new_entry)
+
+
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
