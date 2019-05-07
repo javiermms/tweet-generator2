@@ -56,9 +56,9 @@ class HashTable(object):
         all_items = []
 
         for bucket in self.buckets:
-            for key, value in bucket.items():
-                all_items.append(value)
+            all_items.extend(bucket.items())
         return all_items
+
 
     def length(self):
         """Return the number of key-value entries by traversing its buckets.
