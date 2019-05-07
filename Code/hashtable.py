@@ -138,6 +138,12 @@ class HashTable(object):
 
         key_value = bucket.find(lambda item : item[0] == key)
 
+        if key_value is not None:
+            bucket.delete(key_value)
+        else:
+            raise KeyError('Key not found: {}'.format(key))
+
+
 
 def test_hash_table():
     ht = HashTable()
