@@ -97,6 +97,14 @@ class HashTable(object):
         # TODO: Otherwise, raise error to tell user get failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
 
+        bucket = self.buckets[self._bucket_index(key)]
+        entry = bucket.find(lambda key_value: key_value[0] == key)
+
+        if entry is not None:
+            return entry[1]
+        else:
+            raise KeyError('Key not found: {}'.format(key))
+
     def set(self, key, value):
         """Insert or update the given key with its associated value.
         TODO: Running time: O(???) Why and under what conditions?"""
@@ -104,6 +112,9 @@ class HashTable(object):
         # TODO: Check if key-value entry exists in bucket
         # TODO: If found, update value associated with given key
         # TODO: Otherwise, insert given key-value entry into bucket
+
+        bucket = self.buckets[self._bucket_index(key)]
+        entry = bucket.find(lambda pair: pair[0] == key)
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
@@ -113,6 +124,10 @@ class HashTable(object):
         # TODO: If found, delete entry associated with given key
         # TODO: Otherwise, raise error to tell user delete failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
+
+        bucket = self.buckets[self._bucket_index(key)]
+
+        key_value = bucket.find(lambda item : item[0] == key)
 
 
 def test_hash_table():
