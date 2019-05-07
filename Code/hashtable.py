@@ -29,6 +29,7 @@ class HashTable(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # Collect all keys in each bucket
         all_keys = []
+
         for bucket in self.buckets:
             for key, value in bucket.items():
                 all_keys.append(key)
@@ -40,26 +41,50 @@ class HashTable(object):
         # TODO: Loop through all buckets
         # TODO: Collect all values in each bucket
 
+        cumulative_values = []
+
+        for value in self.buckets:
+            cumulative_values.append(value.items())
+        return cumulative_values
+
     def items(self):
         """Return a list of all items (key-value pairs) in this hash table.
         TODO: Running time: O(???) Why and under what conditions?"""
         # Collect all pairs of key-value entries in each bucket
         all_items = []
+
         for bucket in self.buckets:
-            all_items.extend(bucket.items())
+            for key, value in bucket.items():
+                all_items.append(value)
         return all_items
 
     def length(self):
         """Return the number of key-value entries by traversing its buckets.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        TODO: Running time: O(b*n) Why and under what conditions?"""
         # TODO: Loop through all buckets
         # TODO: Count number of key-value entries in each bucket
+        count = 0 # O(1)
+
+        for bucket in self.buckets: #b iterations => O(b*l)
+            count += bucket.length() #O(l=n/b) for length method (load factor)
+        return count # O(1)
 
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
+
+        index = self._bucket_index(key)
+        bucket = self.buckets[index]
+
+        if ():
+            return True
+        else:
+            return False
+
+
+
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
