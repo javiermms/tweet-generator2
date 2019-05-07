@@ -59,7 +59,6 @@ class HashTable(object):
             all_items.extend(bucket.items())
         return all_items
 
-
     def length(self):
         """Return the number of key-value entries by traversing its buckets.
         TODO: Running time: O(b*n) Why and under what conditions?"""
@@ -79,8 +78,9 @@ class HashTable(object):
 
         index = self._bucket_index(key)
         bucket = self.buckets[index]
+        entry = bucket.find(lambda key_value: key_value[0] == key)
 
-        if ():
+        if (entry is not None):
             return True
         else:
             return False
