@@ -28,6 +28,7 @@ class HashTable(object):
         """Return a list of all keys in this hash table.
         TODO: Running time: O(???) Why and under what conditions?"""
         # Collect all keys in each bucket
+
         all_keys = []
 
         for bucket in self.buckets:
@@ -43,8 +44,9 @@ class HashTable(object):
 
         cumulative_values = []
 
-        for value in self.buckets:
-            cumulative_values.append(value.items())
+        for bucket in self.buckets:
+            for key, value in bucket.items():
+              cumulative_values.append(value)
         return cumulative_values
 
     def items(self):
