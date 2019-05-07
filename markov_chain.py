@@ -26,7 +26,7 @@ Things your keeping track of:
 - if the word has already been seen 
 
 """
-
+import random
 from dictogram import Dictogram
 
 with open('sample.txt') as f:
@@ -54,5 +54,15 @@ def create_markov(array):
 
     return markov_chain
 
-print(create_markov(words_array))
+def random_start(array):
+    random_word = random.choice(array)
+    return random_word
+
+# def generate_sentence(word):
+
+    
+
+# print(random_start(words_array))
+markov = create_markov(words_array)
+random_start(markov)
 
