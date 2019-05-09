@@ -63,6 +63,6 @@ def random_start(array):
     
 
 # print(random_start(words_array))
-markov = create_markov(words_array)
-random_start(markov)
+print(create_markov(words_array))
+# random_start(markov)
 
