@@ -37,7 +37,7 @@ class LinkedList(object):
         """Return a list (dynamic array) of all items in this linked list.
         Best and worst case running time: O(n) for n items in the list (length)
         because we always need to loop through all n nodes to get each item."""
-        items = []  # O(1) time to create empty list
+        items = []  # O(1) time to create empty lis
         # Start at head node
         node = self.head  # O(1) time to assign new variable
         # Loop until node is None, which is one node too far past tail
@@ -114,51 +114,50 @@ class LinkedList(object):
 
         # 2n + 2 = O(n)
 
-
     def delete(self, item):
-        """Delete the given item from this linked list, or raise ValueError.
-        TODO: Best case running time: O(1) If the firt item happens to be the one we are looking for
-        TODO: Worst case running time: O(n) if we have to go through the whole 
-        linked list to find item that we want to delete or item does not exist"""
-        # TODO: Loop through all nodes to find one whose data matches given item
-        # TODO: Update previous node to skip around node with matching data
-        # TODO: Otherwise raise error to tell user that delete has failed
-        # Hint: raise ValueError('Item not found: {}'.format(item))
+            """Delete the given item from this linked list, or raise ValueError.
+            TODO: Best case running time: O(1) If the firt item happens to be the one we are looking for
+            TODO: Worst case running time: O(n) if we have to go through the whole 
+            linked list to find item that we want to delete or item does not exist"""
+            # TODO: Loop through all nodes to find one whose data matches given item
+            # TODO: Update previous node to skip around node with matching data
+            # TODO: Otherwise raise error to tell user that delete has failed
+            # Hint: raise ValueError('Item not found: {}'.format(item))
 
-        current_node = self.head  # O(1)
-        previous_node = None # O(1)
-        found = False # O(1)
+            current_node = self.head  # O(1)
+            previous_node = None # O(1)
 
-        while current_node: # from 1 to n iterations
-            if self.head.data == item:
-                if self.head.next != None:
-                    self.head = self.head.next # O(1)
-                    found = True # O(1)
-                    break
-                else:
-                    self.head = None # O(1)
-                    self.tail = None # O(1)
-                    found = True # O(1)
-                    break
-            elif current_node.data == item:
-                if current_node != self.tail:
-                    previous_node.next = current_node.next # O(1)
-                    found = True # O(1)
-                    break
-                else:
-                    previous_node.next = None # O(1)
-                    self.tail = previous_node # O(1)
-                    found = True # O(1)
-                    break
-                    
-            else:
+            while current_node: # from 1 to n iterations
+                # if/else block checks for match and deletes node depending on its location in the ll
+                if self.head.data == item:
+                    # checks to see if more than one item is on ll
+                    if self.head.next != None:
+                        self.head = self.head.next # O(1)
+                        break
+                    # if there isn't it deletes the item from the linked list
+                    else:
+                        self.head = None # O(1)
+                        self.tail = None # O(1)
+                        break
+                elif current_node.data == item:
+                    # if found in the middle
+                    if current_node == self.tail:
+                        previous_node.next = None # O(1)
+                        self.tail = previous_node # O(1)
+                        break
+                    # deletes tail
+                    else:
+                        previous_node.next = current_node.next # O(1)
+                        break
+                        
+                # keeps traversing through ll   
                 previous_node = current_node # O(1)
                 current_node = current_node.next # O(1)
 
-        if not found:
-            raise ValueError('Item not found: {}'.format(item)) # O(1)
+            if current_node == None:
+                raise ValueError('Item not found: {}'.format(item)) # O(1)
 
-        # 12n + 4 = O(n)
+            # 12n + 4 = O(n)
 
 
 def test_linked_list():
@@ -179,7 +178,7 @@ def test_linked_list():
     delete_implemented = True
     if delete_implemented:
         print('\nTesting delete:')
-        for item in ['B', 'C', 'A']:
+        for item in ['A', 'B', 'C']:
             print('delete({!r})'.format(item))
             ll.delete(item)
             print('list: {}'.format(ll))
