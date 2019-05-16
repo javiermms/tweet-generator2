@@ -11,5 +11,5 @@ def create_dic_histogram(array):
             dic[word] += 1
     return dic 
 
-print(create_dic_histogram(words_array))
+array = create_dic_histogram(words_array)
 

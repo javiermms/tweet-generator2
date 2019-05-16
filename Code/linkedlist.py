@@ -140,12 +140,12 @@ class LinkedList(object):
                         self.tail = None # O(1)
                         break
                 elif current_node.data == item:
-                    # if found in the middle
+                    # deletes tail
                     if current_node == self.tail:
                         previous_node.next = None # O(1)
                         self.tail = previous_node # O(1)
                         break
-                    # deletes tail
+                    # if found in the middle
                     else:
                         previous_node.next = current_node.next # O(1)
                         break
