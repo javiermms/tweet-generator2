@@ -28,6 +28,7 @@ Things your keeping track of:
 """
 import random
 from dictogram import Dictogram
+from stochastic_sampling import probability
 
 with open('sample.txt') as f:
     text = f.read()
@@ -55,14 +56,24 @@ def create_markov(array):
     return markov_chain
 
 def random_start(array):
-    random_word = random.choice(array)
+    random_word = random.choice(list(array.keys()))
     return random_word
 
-# def generate_sentence(word):
+def generate_sentence(markov_chain):
+    length = 15
+    first_word = random_start(markov_chain)
+    sentence = first_word.capitalize()
+
+    for word in range(random.randint(1, length)):
+        second_word = probability(markov_chain[first_word])
+        first_word = second_word
+        sentence += ' ' + second_word
+    
+    return sentence
 
     
 
 # print(random_start(words_array))
-print(create_markov(words_array))
+print(generate_sentence(create_markov(words_array)))
 # random_start(markov)
 
