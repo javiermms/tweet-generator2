@@ -37,20 +37,6 @@ def second_order_sentence(markov_chain, length=20):
             return sentence
     return sentence
 
-    #  def chain_traversal(self, length=10):
-    #     current_word = random.choice(list(self))
-    #     current_word = random.choice(list(self.keys()))
-    #     sentence = []
-    #     sentence.append(current_word)
-    #     for _ in range(length):
-    #         new_word = sample(self[current_word])
-    #         sentence.append(sample(self[current_word]))
-    #         current_word = new_word
-    #         current_word = (current_word[1], new_word)
-    #     return ' '.join(sentence)
-    
+result = second_order_sentence(create_markov(words_array)))
 
-# print(random_start(words_array))
-print(second_order_sentence(create_markov(words_array)))
-# random_start(markov)
 
