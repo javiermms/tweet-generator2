@@ -29,10 +29,14 @@ Things your keeping track of:
 import random
 from dictogram import Dictogram
 from stochastic_sampling import probability
+import string
 
-with open('sample.txt') as f:
+with open('candide.txt') as f:
+    
     text = f.read()
-    words_array = text.split()
+    asking = text
+    asking = ''.join([c for c in asking if c not in ('!', '?', ':', ',', ';', '"', '.','--')])
+    words_array = asking.split()
 
 def create_markov(array):
     markov_chain = {}
