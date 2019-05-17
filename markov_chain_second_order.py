@@ -37,6 +37,9 @@ def second_order_sentence(markov_chain, length=20):
             return sentence
     return sentence
 
-result = second_order_sentence(create_markov(words_array)))
+
+if __name__ == '__main__':
+    result = second_order_sentence(create_markov(words_array))
+    print(result)
 
 
