@@ -1,6 +1,6 @@
 with open('moby_partial.txt') as f:
     text = f.read()
-    punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~”“'''
+    punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~”“’'''
     no_punct = ""
 
     for char in text:

@@ -3,16 +3,14 @@ from dictogram import Dictogram
 from stochastic_sampling import probability
 import string
 from clean_up_text import words_array
-
-def get_three_words(array):
-    for index in range(len(array)-2):
-        yield(array[index], array[index + 1], array[index + 2])
-
+        
 def create_markov(array):
     markov_chain = {}
-    three_words = (get_three_words(words_array))
-    
-    for word_1, word_2, word_3 in three_words:
+
+    for num in range(len(array)-2):
+        word_1 = array[num]
+        word_2 = array[num + 1]
+        word_3 = array[num + 2]
         tuple = (word_1, word_2)
         if tuple not in markov_chain:
             add_tuple = Dictogram([word_3])
@@ -26,13 +24,30 @@ def random_start(array):
     random_word = random.choice(list(array.keys()))
     return random_word
 
-def second_order_sentence(markov_chain):
-    length = 20
+def second_order_sentence(markov_chain, length=20):
     first_words = random_start(markov_chain)
     sentence = first_words[0].capitalize() + ' ' + first_words[1] + ' '
     
-    f
+    for _ in range(random.randint(0, length)):
+        next_word = probability(markov_chain[first_words])
+        prev_words = (first_words[1], next_word)
+        first_words = prev_words
+        sentence += next_word + ' '
+        if prev_words not in markov_chain:
+            return sentence
+    return sentence
 
+    #  def chain_traversal(self, length=10):
+    #     current_word = random.choice(list(self))
+    #     current_word = random.choice(list(self.keys()))
+    #     sentence = []
+    #     sentence.append(current_word)
+    #     for _ in range(length):
+    #         new_word = sample(self[current_word])
+    #         sentence.append(sample(self[current_word]))
+    #         current_word = new_word
+    #         current_word = (current_word[1], new_word)
+    #     return ' '.join(sentence)
     
 
 # print(random_start(words_array))

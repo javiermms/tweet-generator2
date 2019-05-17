@@ -30,13 +30,7 @@ import random
 from dictogram import Dictogram
 from stochastic_sampling import probability
 import string
-
-with open('candide.txt') as f:
-    
-    text = f.read()
-    asking = text
-    asking = ''.join([c for c in asking if c not in ('!', '?', ':', ',', ';', '"', '.','--')])
-    words_array = asking.split()
+from clean_up_text import words_array
 
 def create_markov(array):
     markov_chain = {}
