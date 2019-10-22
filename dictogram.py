@@ -58,15 +58,14 @@ def main():
         print_histogram(arguments)
     else:
         # Test histogram on letters in a word
-        word = 'abracadabra'
-        print_histogram(list(word))
-        # Test histogram on words in a classic book title
-        fish_text = 'one fish two fish red fish blue fish'
-        print_histogram(fish_text.split())
+        # word = 'abracadabra'
+        # print_histogram(list(word))
+        # # Test histogram on words in a classic book title
+        # fish_text = 'one fish two fish red fish blue fish'
+        # print_histogram(fish_text.split())
         # Test histogram on words in a long repetitive sentence
-        woodchuck_text = ('how much wood would a wood chuck chuck'
-                          ' if a wood chuck could chuck wood')
-        print_histogram(woodchuck_text.split())
+        firstrow_text = ('14, 9, 5, 12, 18, 10, 35, 8, 3, 14, 1, 22, 5, 19, 13, 7, 4, 40, 13, 1, 3, 4, 8, 5, 9, 17, 6, 3, 1, 7, 2, 7, 6, 1, 6, 5, 2, 6, 3, 1, 4, 12, 15, 16, 21 ')
+        print_histogram(firstrow_text.split())
 
 
 if __name__ == '__main__':
