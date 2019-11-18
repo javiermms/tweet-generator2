@@ -4,14 +4,7 @@ from clean_up_text import words_array
 
 HTML = """<html><head><!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150735145-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-150735145-1');
-</script>
-<title>Tweet Generator</title></head><body><h2>{}</h2></body></html>"""
+</head><body><h2>{}</h2></body></html>"""
 app = Flask(__name__)
 
 @app.route('/')
